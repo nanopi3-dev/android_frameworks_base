@@ -14689,6 +14689,7 @@ package android.media {
     field public static final int USAGE_ASSISTANCE_ACCESSIBILITY = 11; // 0xb
     field public static final int USAGE_ASSISTANCE_NAVIGATION_GUIDANCE = 12; // 0xc
     field public static final int USAGE_ASSISTANCE_SONIFICATION = 13; // 0xd
+    field public static final int USAGE_EXT_SPEAKER = 16; // 0x10
     field public static final int USAGE_GAME = 14; // 0xe
     field public static final int USAGE_MEDIA = 1; // 0x1
     field public static final int USAGE_NOTIFICATION = 5; // 0x5
@@ -14953,6 +14954,7 @@ package android.media {
     field public static final int SCO_AUDIO_STATE_ERROR = -1; // 0xffffffff
     field public static final int STREAM_ALARM = 4; // 0x4
     field public static final int STREAM_DTMF = 8; // 0x8
+    field public static final int STREAM_EXT_SPEAKER = 10; // 0xa
     field public static final int STREAM_MUSIC = 3; // 0x3
     field public static final int STREAM_NOTIFICATION = 5; // 0x5
     field public static final int STREAM_RING = 2; // 0x2
@@ -26719,6 +26721,7 @@ package android.provider {
     field public static final deprecated java.lang.String USE_GOOGLE_MAIL = "use_google_mail";
     field public static final java.lang.String VIBRATE_ON = "vibrate_on";
     field public static final java.lang.String VIBRATE_WHEN_RINGING = "vibrate_when_ringing";
+    field public static final java.lang.String VOLUME_EXT_SPEAKER = "volume_ext_speaker";
     field public static final deprecated java.lang.String WAIT_FOR_DEBUGGER = "wait_for_debugger";
     field public static final deprecated java.lang.String WALLPAPER_ACTIVITY = "wallpaper_activity";
     field public static final deprecated java.lang.String WIFI_MAX_DHCP_RETRY_COUNT = "wifi_max_dhcp_retry_count";

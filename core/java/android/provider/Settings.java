@@ -2572,6 +2572,7 @@ public final class Settings {
          * @hide
          */
         public static final String MICROPHONE_MUTE = "microphone_mute";
+        public static final String VOLUME_EXT_SPEAKER = "volume_ext_speaker";
 
         private static final Validator MICROPHONE_MUTE_VALIDATOR = sBooleanValidator;
 
@@ -2618,7 +2619,8 @@ public final class Settings {
          */
         public static final String[] VOLUME_SETTINGS = {
             VOLUME_VOICE, VOLUME_SYSTEM, VOLUME_RING, VOLUME_MUSIC,
-            VOLUME_ALARM, VOLUME_NOTIFICATION, VOLUME_BLUETOOTH_SCO
+            VOLUME_ALARM, VOLUME_NOTIFICATION, VOLUME_BLUETOOTH_SCO,
+            "", "", "", VOLUME_EXT_SPEAKER,
         };
 
         /**
