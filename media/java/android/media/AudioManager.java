@@ -405,6 +405,7 @@ public class AudioManager {
     public static final int STREAM_TTS = AudioSystem.STREAM_TTS;
     /** @hide The audio stream for incall music delivery */
     public static final int STREAM_INCALL_MUSIC = AudioSystem.STREAM_INCALL_MUSIC;
+    public static final int STREAM_EXT_SPEAKER = AudioSystem.STREAM_EXT_SPEAKER;
     /** Number of audio streams */
     /**
      * @deprecated Use AudioSystem.getNumStreamTypes() instead
@@ -3385,6 +3386,7 @@ public class AudioManager {
         case STREAM_ALARM:
         case STREAM_NOTIFICATION:
         case STREAM_DTMF:
+        case STREAM_EXT_SPEAKER:
             return AudioSystem.getDevicesForStream(streamType);
         default:
             return 0;

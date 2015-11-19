@@ -2323,6 +2323,8 @@ public final class Settings {
          */
         public static final String VOLUME_BLUETOOTH_SCO = "volume_bluetooth_sco";
 
+        public static final String VOLUME_EXT_SPEAKER = "volume_ext_speaker";
+
         /**
          * Master volume (float in the range 0.0f to 1.0f).
          * @hide
@@ -2444,7 +2446,8 @@ public final class Settings {
          */
         public static final String[] VOLUME_SETTINGS = {
             VOLUME_VOICE, VOLUME_SYSTEM, VOLUME_RING, VOLUME_MUSIC,
-            VOLUME_ALARM, VOLUME_NOTIFICATION, VOLUME_BLUETOOTH_SCO
+            VOLUME_ALARM, VOLUME_NOTIFICATION, VOLUME_BLUETOOTH_SCO,
+            "", "", "", "", VOLUME_EXT_SPEAKER,
         };
 
         /**
@@ -3604,6 +3607,7 @@ public final class Settings {
             VOLUME_ALARM,
             VOLUME_NOTIFICATION,
             VOLUME_BLUETOOTH_SCO,
+            VOLUME_EXT_SPEAKER,
             VOLUME_VOICE + APPEND_FOR_LAST_AUDIBLE,
             VOLUME_SYSTEM + APPEND_FOR_LAST_AUDIBLE,
             VOLUME_RING + APPEND_FOR_LAST_AUDIBLE,
@@ -3611,6 +3615,7 @@ public final class Settings {
             VOLUME_ALARM + APPEND_FOR_LAST_AUDIBLE,
             VOLUME_NOTIFICATION + APPEND_FOR_LAST_AUDIBLE,
             VOLUME_BLUETOOTH_SCO + APPEND_FOR_LAST_AUDIBLE,
+            VOLUME_EXT_SPEAKER + APPEND_FOR_LAST_AUDIBLE,
             TEXT_AUTO_REPLACE,
             TEXT_AUTO_CAPS,
             TEXT_AUTO_PUNCTUATE,

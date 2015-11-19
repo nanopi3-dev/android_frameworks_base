@@ -915,6 +915,7 @@ static jint android_media_AudioTrack_get_output_sample_rate(JNIEnv *env,  jobjec
 #if defined(QCOM_HARDWARE) && !defined(QCOM_DIRECTTRACK)
     case AUDIO_STREAM_INCALL_MUSIC:
 #endif
+    case AUDIO_STREAM_EXT_SPEAKER:
         nativeStreamType = (audio_stream_type_t) javaStreamType;
         break;
     default:
