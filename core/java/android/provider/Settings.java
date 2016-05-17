@@ -1004,6 +1004,8 @@ public final class Settings {
 
     public static final String AUTHORITY = "settings";
 
+    public static final String ETHERNET_ON = "ethernet_on"; //add by FriendlyARM
+
     private static final String TAG = "Settings";
     private static final boolean LOCAL_LOGV = false;
 

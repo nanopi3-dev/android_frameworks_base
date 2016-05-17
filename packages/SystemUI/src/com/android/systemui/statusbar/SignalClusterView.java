@@ -56,8 +56,12 @@ public class SignalClusterView
     private String mWifiDescription;
     private ArrayList<PhoneState> mPhoneStates = new ArrayList<PhoneState>();
 
-    ViewGroup mWifiGroup;
-    ImageView mVpn, mWifi, mAirplane, mNoSims;
+    private boolean mEthernetVisible = false; //add by FriendlyARM
+    private int mEthernetStateId = 0;
+    private int mEthernetDescription;
+
+    ViewGroup mWifiGroup, mEthernetGroup; //modify by FriendlyARM
+    ImageView mVpn, mWifi, mAirplane, mNoSims, mEthernet; //modify by FriendlyARM
     View mWifiAirplaneSpacer;
     View mWifiSignalSpacer;
     LinearLayout mMobileSignalGroup;
@@ -116,9 +120,23 @@ public class SignalClusterView
         mWifiAirplaneSpacer =         findViewById(R.id.wifi_airplane_spacer);
         mWifiSignalSpacer =           findViewById(R.id.wifi_signal_spacer);
         mMobileSignalGroup = (LinearLayout) findViewById(R.id.mobile_signal_group);
+
+        mEthernetGroup  = (ViewGroup) findViewById(R.id.ethernet_combo); //add by FriendlyARM
+        mEthernet       = (ImageView) findViewById(R.id.ethernet_state);
+
         for (PhoneState state : mPhoneStates) {
             mMobileSignalGroup.addView(state.mMobileGroup);
         }
+
+        apply();
+    }
+
+    //add by FriendlyARM
+    @Override
+    public void setEthernetIndicators(boolean visible, int stateIcon, int contentDescription) {
+        mEthernetVisible = visible;
+        mEthernetStateId = stateIcon;
+        mEthernetDescription = contentDescription;
 
         apply();
     }
@@ -129,6 +147,10 @@ public class SignalClusterView
         mWifiGroup      = null;
         mWifi           = null;
         mAirplane       = null;
+
+        mEthernetGroup  = null; //add by FriendlyARM
+        mEthernet       = null;
+
         mMobileSignalGroup.removeAllViews();
         mMobileSignalGroup = null;
 
@@ -306,12 +328,20 @@ public class SignalClusterView
             mWifiSignalSpacer.setVisibility(View.VISIBLE);
         } else {
             mWifiSignalSpacer.setVisibility(View.GONE);
+
+            if (mEthernetVisible && !mWifiVisible) { //add by FriendlyARM
+                mEthernetGroup.setVisibility(View.VISIBLE);
+                mEthernet.setImageResource(mEthernetStateId);
+                mEthernetGroup.setContentDescription(mContext.getString(mEthernetDescription));
+            } else {
+                mEthernetGroup.setVisibility(View.GONE);
+            }
         }
 
         mNoSims.setVisibility(mNoSimsVisible ? View.VISIBLE : View.GONE);
 
         boolean anythingVisible = mNoSimsVisible || mWifiVisible || mIsAirplaneMode
-                || anyMobileVisible || mVpnVisible;
+                || anyMobileVisible || mVpnVisible || mEthernetVisible;
         setPaddingRelative(0, 0, anythingVisible ? mEndPadding : mEndPaddingNothingVisible, 0);
     }
 

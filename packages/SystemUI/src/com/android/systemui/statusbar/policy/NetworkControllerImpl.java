@@ -21,6 +21,7 @@ import static android.net.NetworkCapabilities.TRANSPORT_BLUETOOTH;
 import static android.net.NetworkCapabilities.TRANSPORT_CELLULAR;
 import static android.net.NetworkCapabilities.TRANSPORT_ETHERNET;
 import static android.net.NetworkCapabilities.TRANSPORT_WIFI;
+import android.net.EthernetManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -321,6 +322,7 @@ public class NetworkControllerImpl extends BroadcastReceiver
         cluster.setIsAirplaneMode(mAirplaneMode, TelephonyIcons.FLIGHT_MODE_ICON,
                 R.string.accessibility_airplane_mode);
         cluster.setNoSims(mHasNoSims);
+        cluster.setEthernetIndicators(false,R.drawable.ethernet_disconnected,R.string.accessibility_ethernet_disconnected);
         mWifiSignalController.notifyListeners();
         for (MobileSignalController mobileSignalController : mMobileSignalControllers.values()) {
             mobileSignalController.notifyListeners();
@@ -609,6 +611,18 @@ public class NetworkControllerImpl extends BroadcastReceiver
         }
         mWifiSignalController.setInetCondition(
                 mValidatedTransports.get(mWifiSignalController.getTransportType()) ? 1 : 0);
+        //add by FriendlyARM
+        int length = mSignalClusters.size();
+        int ethicon = R.drawable.ethernet_connecting;
+        int ethacc = R.string.accessibility_ethernet_connecting;
+        if (mValidatedTransports.get(TRANSPORT_ETHERNET)) {
+            ethicon = R.drawable.ethernet_connected;
+            ethacc = R.string.accessibility_ethernet_connected;
+        }
+        for (int i = 0; i < length; i++) {
+            mSignalClusters.get(i).setEthernetIndicators(mEthernetConnected, ethicon,ethacc);
+        }
+        //end add
     }
 
     /**
@@ -1790,6 +1804,7 @@ public class NetworkControllerImpl extends BroadcastReceiver
         void setNoSims(boolean show);
 
         void setIsAirplaneMode(boolean is, int airplaneIcon, int contentDescription);
+        public void setEthernetIndicators(boolean visible, int stateIcon, int contentDescription);
     }
 
     public interface EmergencyListener {

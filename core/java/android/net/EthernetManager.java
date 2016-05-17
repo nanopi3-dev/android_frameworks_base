@@ -35,6 +35,24 @@ public class EthernetManager {
     private static final String TAG = "EthernetManager";
     private static final int MSG_AVAILABILITY_CHANGED = 1000;
 
+    public static final int ETH_STATE_UNKNOWN = 0;
+    public static final int ETH_STATE_DISABLED = 1;
+    public static final int ETH_STATE_ENABLED = 2;
+
+    public void start() {
+        try {
+            mService.Trackstart();
+        } catch (NullPointerException | RemoteException e) {
+        }
+    }
+
+    public void stop() {
+        try {
+            mService.Trackstop();
+        } catch (NullPointerException | RemoteException e) {
+        }
+    }
+
     private final Context mContext;
     private final IEthernetManager mService;
     private final Handler mHandler = new Handler() {
